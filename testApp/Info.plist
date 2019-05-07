@@ -2,6 +2,29 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>parameters</key>
+	<dict>
+		<key>a</key>
+		<string>a</string>
+		<key>token</key>
+		<string>token</string>
+		<key>session</key>
+		<string>session</string>
+		<key>body</key>
+		<string>body</string>
+	</dict>
+	<key>addEntry</key>
+	<string>add_entry</string>
+	<key>getEntries</key>
+	<string>get_entries</string>
+	<key>newSession</key>
+	<string>new_session</string>
+	<key>user</key>
+	<string>Default</string>
+	<key>url</key>
+	<string>https://bnet.i-partner.ru/testAPI/</string>
+	<key>token</key>
+	<string>VkaBLhv-af-ljJK0Zb</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
