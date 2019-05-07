@@ -151,12 +151,32 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cannot Connect to Server" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q5e-uX-Xoy">
+                                <rect key="frame" x="16" y="238" width="288" height="156"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Q5e-uX-Xoy" secondAttribute="height" multiplier="24:13" id="J3B-5D-mHO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6DP-4u-eIJ">
+                                <rect key="frame" x="140" y="330" width="43" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Retry"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="yXd-eN-Yh2" firstAttribute="top" secondItem="N50-pz-UJt" secondAttribute="top" id="6Fd-TU-Vss"/>
+                            <constraint firstItem="Q5e-uX-Xoy" firstAttribute="leading" secondItem="N50-pz-UJt" secondAttribute="leading" constant="16" id="8lN-QY-XIh"/>
+                            <constraint firstItem="Q5e-uX-Xoy" firstAttribute="centerY" secondItem="FVc-zE-cxs" secondAttribute="centerY" constant="32" id="Qzg-Z4-ncA"/>
+                            <constraint firstItem="N50-pz-UJt" firstAttribute="trailing" secondItem="Q5e-uX-Xoy" secondAttribute="trailing" constant="16" id="TxA-hx-Lgi"/>
                             <constraint firstItem="N50-pz-UJt" firstAttribute="trailing" secondItem="yXd-eN-Yh2" secondAttribute="trailing" id="VWl-Sd-MRg"/>
                             <constraint firstItem="yXd-eN-Yh2" firstAttribute="leading" secondItem="N50-pz-UJt" secondAttribute="leading" id="j9N-Ih-Wr8"/>
+                            <constraint firstItem="Q5e-uX-Xoy" firstAttribute="centerX" secondItem="yXd-eN-Yh2" secondAttribute="centerX" id="npZ-HE-MEe"/>
                             <constraint firstItem="N50-pz-UJt" firstAttribute="bottom" secondItem="yXd-eN-Yh2" secondAttribute="bottom" id="oh3-Cx-FIN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="N50-pz-UJt"/>
@@ -174,7 +194,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cVU-Qy-6IQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1344" y="-769"/>
+            <point key="canvasLocation" x="1342.5" y="-769.0140845070423"/>
         </scene>
     </scenes>
 </document>
