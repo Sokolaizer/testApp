@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3020439E2282C666009A7D75 /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3020439C2282C666009A7D75 /* ErrorView.xib */; };
+		3045DF9E2282D71900F8833E /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3045DF9D2282D71900F8833E /* ErrorView.swift */; };
 		3050C208227DEE1100069A5B /* ResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3050C207227DEE1100069A5B /* ResponseData.swift */; };
 		3050C20E2280BC2600069A5B /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3050C20D2280BC2600069A5B /* Preferences.swift */; };
 		3050C2102281AA3E00069A5B /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3050C20F2281AA3E00069A5B /* Formatter.swift */; };
@@ -25,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3020439C2282C666009A7D75 /* ErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ErrorView.xib; path = ViewControllers/ErrorView.xib; sourceTree = "<group>"; };
+		3045DF9D2282D71900F8833E /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		3050C207227DEE1100069A5B /* ResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseData.swift; sourceTree = "<group>"; };
 		3050C20D2280BC2600069A5B /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		3050C20F2281AA3E00069A5B /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
@@ -113,6 +117,8 @@
 				3050C2132281D32D00069A5B /* ViewControllers */,
 				3050C2142281D37600069A5B /* Model */,
 				306E8E61227CAC4100280C28 /* Main.storyboard */,
+				3020439C2282C666009A7D75 /* ErrorView.xib */,
+				3045DF9D2282D71900F8833E /* ErrorView.swift */,
 				306E8E7B227DD09900280C28 /* API.swift */,
 				3050C2112281CEC800069A5B /* Navigation.swift */,
 				306E8E71227D7F9C00280C28 /* TableViewCell.swift */,
@@ -200,6 +206,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				306E8E68227CAC4500280C28 /* LaunchScreen.storyboard in Resources */,
+				3020439E2282C666009A7D75 /* ErrorView.xib in Resources */,
 				306E8E65227CAC4500280C28 /* Assets.xcassets in Resources */,
 				306E8E63227CAC4100280C28 /* Main.storyboard in Resources */,
 			);
@@ -260,6 +267,7 @@
 				306E8E72227D7F9C00280C28 /* TableViewCell.swift in Sources */,
 				306E8E70227CE78F00280C28 /* TableViewController.swift in Sources */,
 				306E8E5E227CAC4100280C28 /* AppDelegate.swift in Sources */,
+				3045DF9E2282D71900F8833E /* ErrorView.swift in Sources */,
 				306E8E76227D807000280C28 /* ShowViewController.swift in Sources */,
 				3050C208227DEE1100069A5B /* ResponseData.swift in Sources */,
 				306E8E7C227DD09900280C28 /* API.swift in Sources */,

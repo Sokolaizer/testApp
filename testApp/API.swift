@@ -4,9 +4,10 @@ import Alamofire
 import Locksmith
 
 struct API {
-  static let preferences = Preferences.get()
+  static let preferences = Preferences.get()!
   static let parametersName = preferences.parameters!
   static let headers = HTTPHeaders(dictionaryLiteral: (parametersName.token, preferences.token))
+//  static var delegate: ErrorDelegate?
   
   static func loadParameters(for funcName: String) -> [String: String] {
     var parameters: [String: String] = [parametersName.a: funcName]
@@ -36,6 +37,7 @@ struct API {
         }
         complition()
       case .failure(let error):
+//        delegate?.errorText = error.localizedDescription
         print(error)
       }
     }
@@ -55,7 +57,7 @@ struct API {
     }
   }
   
-  static func addEntry(body: String, complition: @escaping () -> ()) {
+  static func addEntry(body: String, complition: @escaping () -> (), failureComplition: @escaping ()->()) {
     var parameters = loadParameters(for: preferences.addEntry)
     parameters[parametersName.body] = body
     Alamofire.request(preferences.url, method: .post, parameters: parameters, encoding: URLEncoding.default ,headers: headers).validate().responseJSON { response in
@@ -65,6 +67,7 @@ struct API {
         complition()
         print(responseData)
       case .failure(let error):
+        failureComplition()
         print(error)
       }
     }

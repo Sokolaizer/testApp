@@ -16,24 +16,15 @@ struct Preferences: Codable {
     let session: String
   }
   
-  static func get() -> Preferences {
+  static func get() -> Preferences? {
     guard let path = Bundle.main.path(forResource: "Info", ofType: "plist"),
-      let xml = FileManager.default.contents(atPath: path) else {return Preferences()}
+      let xml = FileManager.default.contents(atPath: path) else {return nil}
     do {
       let preferences = try PropertyListDecoder().decode(Preferences.self, from: xml)
       return preferences
     } catch {
       print(error)
-      return Preferences()
+      return nil
     }
-  }
-  init() {
-    self.url = ""
-    self.token = ""
-    self.user = ""
-    self.addEntry = ""
-    self.getEntries = ""
-    self.newSession = ""
-    self.parameters = nil
   }
 }
