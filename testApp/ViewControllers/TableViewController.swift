@@ -53,8 +53,6 @@ class TableViewController: UITableViewController {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     guard let identifier = segue.identifier else {return}
     switch identifier {
-    case Constants.addSegueIdentifier :
-      Navigation.toAddViewController(navigationItem: navigationItem)
     case Constants.showSegueIdentifier:
       Navigation.toShowViewController(from: self, with: segue, and: entries, sender: sender)
     default: break
