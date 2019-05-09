@@ -10,26 +10,39 @@ class TableViewController: UITableViewController {
   
   var entries: [Entry] = []
   
-  @IBAction func addRow(_ sender: UIBarButtonItem) {
+  @IBAction func addRowButton(_ sender: UIBarButtonItem) {
     performSegue(withIdentifier: Constants.addSegueIdentifier, sender: self)
   }
-
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    API.startNewSession {
-      API.getEntries{ entries in
-        self.entries = entries[0]
-        self.tableView.reloadData()
-      }
-    }
+    startNewSession()
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(false)
-    API.getEntries { entries in
+    getEntries()
+  }
+  
+  func startNewSession() {
+    API.startNewSession(complition: {
+      self.getEntries()
+    }) { error in
+      Navigation.showAlert(with: error, and: {
+        self.startNewSession()
+      }, sender: self)
+    }
+  }
+  
+  func getEntries() {
+    API.getEntries(complition: { entries in
       self.entries = entries[0]
       self.tableView.reloadData()
-    }
+    }, failureComplition: { error in
+      Navigation.showAlert(with: error, and: {
+        self.getEntries()
+      }, sender: self)
+    })
   }
   
   // MARK: - UITableViewDataSource
@@ -48,7 +61,7 @@ class TableViewController: UITableViewController {
     tableViewCell.setUpCell(with: entries[indexPath.row])
     return tableViewCell
   }
-
+  
   // MARK: - Navigation
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     guard let identifier = segue.identifier else {return}

@@ -7,7 +7,6 @@ struct API {
   static let preferences = Preferences.get()!
   static let parametersName = preferences.parameters!
   static let headers = HTTPHeaders(dictionaryLiteral: (parametersName.token, preferences.token))
-//  static var delegate: ErrorDelegate?
   
   static func loadParameters(for funcName: String) -> [String: String] {
     var parameters: [String: String] = [parametersName.a: funcName]
@@ -22,7 +21,7 @@ struct API {
     }
   }
   
-  static func startNewSession(complition: @escaping () -> ()) {
+  static func startNewSession(complition: @escaping () -> (), failureComplition: @escaping (_ error: Error)->())  {
     guard Locksmith.loadDataForUserAccount(userAccount: preferences.user) == nil else {return}
     Alamofire.request(preferences.url, method: .post, parameters: loadParameters(for: preferences.newSession), encoding: URLEncoding.default ,headers: headers).validate().responseJSON { response in
       switch response.result {
@@ -37,13 +36,12 @@ struct API {
         }
         complition()
       case .failure(let error):
-//        delegate?.errorText = error.localizedDescription
-        print(error)
+        failureComplition(error)
       }
     }
   }
   
-  static func getEntries(complition: @escaping ([[Entry]]) -> ()) {
+  static func getEntries(complition: @escaping ([[Entry]]) -> (), failureComplition: @escaping (_ error: Error)->()) {
     Alamofire.request(preferences.url, method: .post, parameters: loadParameters(for: preferences.getEntries), encoding: URLEncoding.default ,headers: headers).validate().responseJSON { response in
       switch response.result {
       case .success:
@@ -52,23 +50,20 @@ struct API {
         let response = try! decoder.decode(ResponseData.EntriesResponse.self, from: responseData)
         complition(response.data)
       case .failure(let error):
-        print(error)
+        failureComplition(error)
       }
     }
   }
   
-  static func addEntry(body: String, complition: @escaping () -> (), failureComplition: @escaping ()->()) {
+  static func addEntry(body: String, complition: @escaping () -> (), failureComplition: @escaping (_ error: Error)->()) {
     var parameters = loadParameters(for: preferences.addEntry)
     parameters[parametersName.body] = body
     Alamofire.request(preferences.url, method: .post, parameters: parameters, encoding: URLEncoding.default ,headers: headers).validate().responseJSON { response in
       switch response.result {
       case .success:
-        guard let responseData = response.data else {return}
         complition()
-        print(responseData)
       case .failure(let error):
-        failureComplition()
-        print(error)
+        failureComplition(error)
       }
     }
   }

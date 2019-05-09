@@ -76,7 +76,7 @@
                     <navigationItem key="navigationItem" title="List" id="dxK-iu-4tn">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="I1y-FR-8MB">
                             <connections>
-                                <action selector="addRow:" destination="htC-wo-vYe" id="p4o-H5-uKK"/>
+                                <action selector="addRowButton:" destination="htC-wo-vYe" id="p4o-H5-uKK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -168,18 +168,18 @@
                     <navigationItem key="navigationItem" title="Add" id="e6m-sS-uav">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Bk6-p9-DZZ">
                             <connections>
-                                <action selector="cancelAdding:" destination="ndW-QA-hJV" id="6Uj-Z4-8kd"/>
-                                <segue destination="B3c-h7-0dg" kind="presentation" identifier="cancelSegue" modalTransitionStyle="crossDissolve" id="Bjn-rj-SG6"/>
+                                <action selector="cancelAddingButton:" destination="ndW-QA-hJV" id="6Uj-Z4-8kd"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="T0Z-y5-co8">
                             <connections>
-                                <action selector="saveEntry:" destination="ndW-QA-hJV" id="xXz-KX-4lC"/>
+                                <action selector="saveEntryButton:" destination="ndW-QA-hJV" id="bO1-Rc-RlG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="textView" destination="yXd-eN-Yh2" id="2Gc-Fv-vvN"/>
+                        <segue destination="B3c-h7-0dg" kind="presentation" identifier="backSegue" modalTransitionStyle="crossDissolve" id="yrC-oA-5hn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cVU-Qy-6IQ" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -4,9 +4,8 @@ import UIKit
 class AddViewController: UIViewController {
   enum Constants {
     static let defaultInset: CGFloat = 16.0
-    static let cancelSegueIdentifier = "cancelSegue"
+    static let backSegue = "backSegue"
   }
-  
   @IBOutlet weak var textView: UITextView! {
     didSet {
       textView.text = ""
@@ -14,22 +13,29 @@ class AddViewController: UIViewController {
     }
   }
 
-  @IBAction func cancelAdding(_ sender: UIBarButtonItem) {
-    performSegue(withIdentifier: Constants.cancelSegueIdentifier, sender: self)
+  @IBAction func cancelAddingButton(_ sender: UIBarButtonItem) {
+    performSegue(withIdentifier: Constants.backSegue, sender: self)
   }
   
-  @IBAction func saveEntry(_ sender: UIBarButtonItem) {
-    API.addEntry(body: textView.text,
-                 complition: {self.navigationController?.popToRootViewController(animated: true)}, failureComplition: {
-                  // TODO:- Show errorView
-//                  let errorView = ErrorView(frame: UIScreen.main.bounds)
-//                  self.view.addSubview(errorView)
-//                  self.view.setNeedsDisplay()
-    })
+  @IBAction func saveEntryButton(_ sender: UIBarButtonItem) {
+    addEntry()
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
     textView.becomeFirstResponder()
   }
+  
+  func addEntry() {
+    API.addEntry(body: textView.text,
+                 complition: {
+                  self.performSegue(withIdentifier: Constants.backSegue, sender: self)
+    }, failureComplition: { error in
+      self.textView.endEditing(true)
+      Navigation.showAlert(with: error, and: {
+        self.addEntry()
+      }, sender: self)
+    })
+  }
 }
+
