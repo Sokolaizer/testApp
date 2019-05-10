@@ -23,7 +23,7 @@ struct API {
   
   static func startNewSession(complition: @escaping () -> (), failureComplition: @escaping (_ error: Error)->())  {
     guard Locksmith.loadDataForUserAccount(userAccount: preferences.user) == nil else {return}
-    Alamofire.request(preferences.url, method: .post, parameters: loadParameters(for: preferences.newSession), encoding: URLEncoding.default ,headers: headers).validate().responseJSON { response in
+    Alamofire.request(preferences.url, method: .post, parameters: loadParameters(for: preferences.newSession), encoding: URLEncoding.default, headers: headers).validate().responseJSON { response in
       switch response.result {
       case .success:
         guard let responseData = response.data else {return}
@@ -71,8 +71,8 @@ struct API {
 
 extension Dictionary where Key == String, Value == String{
   static func += (left: inout [String:String], right: [String:String]) {
-    for (k, v) in right {
-      left[k] = v
+    for (key, value) in right {
+      left[key] = value
     }
   }
 }

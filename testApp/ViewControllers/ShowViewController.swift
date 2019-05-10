@@ -9,7 +9,10 @@ class ShowViewController: UIViewController {
   
   @IBOutlet weak var textView: UITextView! {
     didSet {
-      textView.textContainerInset = UIEdgeInsets(top: Constants.defaultInset, left: Constants.defaultInset, bottom: Constants.defaultInset, right: Constants.defaultInset)
+      textView.textContainerInset = UIEdgeInsets(top: Constants.defaultInset,
+                                                 left: Constants.defaultInset,
+                                                 bottom: Constants.defaultInset,
+                                                 right: Constants.defaultInset)
     }
   }
   

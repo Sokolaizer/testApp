@@ -2,7 +2,7 @@
 import UIKit
 struct Navigation {
   enum Constants {
-    static let buttonTitle = "Retry"
+    static let retryButtonTitle = "Retry"
     static let controllerTitle = "Alert"
   }
   
@@ -15,7 +15,7 @@ struct Navigation {
   }
   
   static func showAlert(with error: Error, and actionFunc: @escaping () -> (), sender: UIViewController) {
-    let action = UIAlertAction(title: Constants.buttonTitle, style: .default) {(action: UIAlertAction) in actionFunc()}
+    let action = UIAlertAction(title: Constants.retryButtonTitle, style: .default) {(action: UIAlertAction) in actionFunc()}
     let alertController = UIAlertController(title: Constants.controllerTitle, message: error.localizedDescription, preferredStyle: .alert)
     alertController.addAction(action)
     sender.present(alertController, animated: true, completion: nil)
