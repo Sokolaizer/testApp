@@ -16,33 +16,12 @@ class TableViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    startNewSession()
+    Session.start(viewController: self)
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(false)
-    getEntries()
-  }
-  
-  func startNewSession() {
-    API.startNewSession(complition: {
-      self.getEntries()
-    }) { error in
-      Navigation.showAlert(with: error, and: {
-        self.startNewSession()
-      }, sender: self)
-    }
-  }
-  
-  func getEntries() {
-    API.getEntries(complition: { entries in
-      self.entries = entries[0]
-      self.tableView.reloadData()
-    }, failureComplition: { error in
-      Navigation.showAlert(with: error, and: {
-        self.getEntries()
-      }, sender: self)
-    })
+    Session.getEntries(viewController: self)
   }
   
   // MARK: - UITableViewDataSource

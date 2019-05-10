@@ -18,24 +18,12 @@ class AddViewController: UIViewController {
   }
   
   @IBAction func saveEntryButton(_ sender: UIBarButtonItem) {
-    addEntry()
+    Session.addEntry(viewController: self)
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
     textView.becomeFirstResponder()
-  }
-  
-  func addEntry() {
-    API.addEntry(body: textView.text,
-                 complition: {
-                  self.performSegue(withIdentifier: Constants.backSegue, sender: self)
-    }, failureComplition: { error in
-      self.textView.endEditing(true)
-      Navigation.showAlert(with: error, and: {
-        self.addEntry()
-      }, sender: self)
-    })
   }
 }
 

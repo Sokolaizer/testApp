@@ -1,6 +1,10 @@
 
 import UIKit
 struct Navigation {
+  enum Constants {
+    static let buttonTitle = "Retry"
+    static let controllerTitle = "Alert"
+  }
   
   static func toShowViewController(from viewContoller: UITableViewController, with segue: UIStoryboardSegue, and entries: [Entry], sender: Any?) {
     guard let cell = sender as? TableViewCell else {return}
@@ -11,8 +15,8 @@ struct Navigation {
   }
   
   static func showAlert(with error: Error, and actionFunc: @escaping () -> (), sender: UIViewController) {
-    let action = UIAlertAction(title: "Retry", style: .default) {(action: UIAlertAction) in actionFunc()}
-    let alertController = UIAlertController(title: "Alert", message: error.localizedDescription, preferredStyle: .alert)
+    let action = UIAlertAction(title: Constants.buttonTitle, style: .default) {(action: UIAlertAction) in actionFunc()}
+    let alertController = UIAlertController(title: Constants.controllerTitle, message: error.localizedDescription, preferredStyle: .alert)
     alertController.addAction(action)
     sender.present(alertController, animated: true, completion: nil)
   }
